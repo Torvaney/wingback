@@ -5,11 +5,11 @@ PYTHON_VENV ?= venv
 
 # nbdev commands
 
-all: understatdb docs
+all: package docs
 
-understatdb: $(SRC)
+package: $(SRC)
 	nbdev_build_lib
-	touch understatdb
+	touch wingback
 
 sync:
 	nbdev_update_lib

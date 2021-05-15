@@ -25,8 +25,8 @@ modules = ["cli.py",
            "db.py",
            "understat.py"]
 
-doc_url = "https://torvaney.github.io/understatdb/"
+doc_url = "https://torvaney.github.io/wingback/"
 
-git_url = "https://github.com/torvaney/understatdb/tree/master/"
+git_url = "https://github.com/torvaney/wingback/tree/master/"
 
 def custom_doc_links(name): return None
