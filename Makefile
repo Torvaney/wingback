@@ -42,4 +42,5 @@ clean:
 env:
 	python -m venv $(PYTHON_VENV)
 	$(PYTHON_VENV)/bin/pip install --upgrade pip
+	$(PYTHON_VENV)/bin/pip install git+ssh://git@github.com/Torvaney/mezzala.git
 	$(PYTHON_VENV)/bin/pip install -e .[dev]

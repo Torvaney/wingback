@@ -1,8 +1,8 @@
-# Understat DB
-> Create a database using data from <a href='understat.com'>Understat</a>.
+# Wing Back
+> Testing team strength models in Python
 
 
-Understat DB is a project to scrape data from [Understat](understat.com) and store it in a Postgres database. It aims to be a useful companion or starting point for projects using football data.
+Because it's backtesting... gettit? Wing _back_? I'll show myself out.
 
 ## Usage
 

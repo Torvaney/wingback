@@ -10,15 +10,24 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
+      title: 'Backtesting '
+      url: backtest.html
+    - output: web,pdf
       title: Understat-DB CLI
       url: cli.html
     - output: web,pdf
       title: Database
       url: db.html
     - output: web,pdf
+      title: Match resimulation
+      url: resimulation.html
+    - output: web,pdf
+      title: Team strength
+      url: team-strength.html
+    - output: web,pdf
       title: Understat
       url: understat.html
     output: web
-    title: understatdb
+    title: wingback
   output: web
   title: Sidebar

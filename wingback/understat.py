@@ -10,6 +10,8 @@ import json
 import requests
 import bs4
 
+# Cell
+
 
 def fetch_html(url):
     """
@@ -46,6 +48,7 @@ class League(enum.Enum):
     RPL = 'RPL'
 
 # Cell
+
 
 class Understat:
     """
