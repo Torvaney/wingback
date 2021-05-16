@@ -40,6 +40,19 @@ nb_path: "nbs/db.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Schema">Schema<a class="anchor-link" href="#Schema"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -47,7 +60,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="evolve_ignore" class="doc_header"><code>evolve_ignore</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>evolve_ignore</code>(<strong><code>registry</code></strong>=<em><code>['base_base_model']</code></em>)</p>
+<h4 id="evolve_ignore" class="doc_header"><code>evolve_ignore</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>evolve_ignore</code>(<strong><code>registry</code></strong>=<em><code>['base_base_model']</code></em>)</p>
 </blockquote>
 
 </div>
@@ -71,7 +84,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="prefixed_snake_case" class="doc_header"><code>prefixed_snake_case</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prefixed_snake_case</code>(<strong><code>prefix</code></strong>)</p>
+<h4 id="prefixed_snake_case" class="doc_header"><code>prefixed_snake_case</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L32" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prefixed_snake_case</code>(<strong><code>prefix</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -88,34 +101,15 @@ nb_path: "nbs/db.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="BaseModel" class="doc_header"><code>class</code> <code>BaseModel</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L31" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BaseModel</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Model</code></p>
-</blockquote>
-<p>A model for base (json) data from Understat</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Understat">Understat<a class="anchor-link" href="#Understat"> </a></h3>
 </div>
-    {% endraw %}
-
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -127,7 +121,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="League" class="doc_header"><code>class</code> <code>League</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L43" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>League</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+<h2 id="BaseModel" class="doc_header"><code>class</code> <code>BaseModel</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L39" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BaseModel</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Model</code></p>
 </blockquote>
 <p>A model for base (json) data from Understat</p>
 
@@ -159,7 +153,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Season" class="doc_header"><code>class</code> <code>Season</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L50" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Season</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+<h2 id="League" class="doc_header"><code>class</code> <code>League</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L51" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>League</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/wingback/db.html#BaseModel"><code>BaseModel</code></a></p>
 </blockquote>
 <p>A model for base (json) data from Understat</p>
 
@@ -191,7 +185,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Matches" class="doc_header"><code>class</code> <code>Matches</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L57" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Matches</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+<h2 id="Season" class="doc_header"><code>class</code> <code>Season</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L58" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Season</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/wingback/db.html#BaseModel"><code>BaseModel</code></a></p>
 </blockquote>
 <p>A model for base (json) data from Understat</p>
 
@@ -223,7 +217,77 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Shots" class="doc_header"><code>class</code> <code>Shots</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L99" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Shots</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+<h2 id="Matches" class="doc_header"><code>class</code> <code>Matches</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L65" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Matches</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/wingback/db.html#BaseModel"><code>BaseModel</code></a></p>
+</blockquote>
+<p>A model for base (json) data from Understat</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="Shots" class="doc_header"><code>class</code> <code>Shots</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L107" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Shots</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/wingback/db.html#BaseModel"><code>BaseModel</code></a></p>
+</blockquote>
+<p>A model for base (json) data from Understat</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Models">Models<a class="anchor-link" href="#Models"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="Resimulation" class="doc_header"><code>class</code> <code>Resimulation</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L123" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Resimulation</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/wingback/db.html#BaseModel"><code>BaseModel</code></a></p>
 </blockquote>
 <p>A model for base (json) data from Understat</p>
 
