@@ -42,5 +42,7 @@ clean:
 env:
 	python -m venv $(PYTHON_VENV)
 	$(PYTHON_VENV)/bin/pip install --upgrade pip
-	$(PYTHON_VENV)/bin/pip install git+ssh://git@github.com/Torvaney/mezzala.git
+	$(PYTHON_VENV)/bin/pip uninstall -y mezzala
+	$(PYTHON_VENV)/bin/pip install --upgrade git+ssh://git@github.com/Torvaney/mezzala.git
 	$(PYTHON_VENV)/bin/pip install -e .[dev]
+	$(PYTHON_VENV)/bin/dbt deps --project-dir dbt

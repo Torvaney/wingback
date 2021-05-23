@@ -65,7 +65,7 @@ nb_path: "nbs/team-strength.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ModelABC" class="doc_header"><code>class</code> <code>ModelABC</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/teamstrength.py#L16" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModelABC</code>()</p>
+<h2 id="ModelABC" class="doc_header"><code>class</code> <code>ModelABC</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L16" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModelABC</code>()</p>
 </blockquote>
 
 </div>
@@ -96,7 +96,7 @@ nb_path: "nbs/team-strength.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCGoals" class="doc_header"><code>class</code> <code>DCGoals</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/teamstrength.py#L35" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCGoals</code>(<strong><code>time_window</code></strong>=<em><code>datetime.timedelta(days=360)</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+<h2 id="DCGoals" class="doc_header"><code>class</code> <code>DCGoals</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L51" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCGoals</code>(<strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
 </blockquote>
 
 </div>
@@ -151,8 +151,8 @@ nb_path: "nbs/team-strength.ipynb"
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dc_model</span> <span class="o">=</span> <span class="n">DCGoals</span><span class="p">()</span>
 
 <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">dc_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
-    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">date</span><span class="o">=</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
 <span class="p">)</span>
 
 <span class="n">dc_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
@@ -174,12 +174,23 @@ nb_path: "nbs/team-strength.ipynb"
 
 <div class="output_area">
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;__main__.DCGoals at 0x12c233198&gt;</pre>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/ben/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py:135: RuntimeWarning: invalid value encountered in log
+  np.log(self._tau(home_goals, away_goals, home_rate, away_rate, rho))
+</pre>
+</div>
 </div>
 
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Everton
+Away team: West Ham
+Home win : 0.43
+Draw     : 0.25
+Away win : 0.33
+</pre>
+</div>
 </div>
 
 </div>
@@ -199,7 +210,7 @@ nb_path: "nbs/team-strength.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCxG" class="doc_header"><code>class</code> <code>DCxG</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/teamstrength.py#L82" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxG</code>() :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+<h2 id="DCxG" class="doc_header"><code>class</code> <code>DCxG</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L123" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxG</code>(<strong><code>min_probability</code></strong>=<em><code>0.1</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
 </blockquote>
 
 </div>
@@ -212,6 +223,69 @@ nb_path: "nbs/team-strength.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xg_model</span> <span class="o">=</span> <span class="n">DCxG</span><span class="p">(</span><span class="n">time_window</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">xg_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
+    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">date</span><span class="o">=</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">(),</span>
+<span class="p">)</span>
+
+<span class="n">xg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">xg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Everton
+Away team: West Ham
+Home win : 0.47
+Draw     : 0.28
+Away win : 0.25
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Model-registry">Model registry<a class="anchor-link" href="#Model-registry"> </a></h2><p>Register models for use with the CLI</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">

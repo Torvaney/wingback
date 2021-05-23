@@ -40,7 +40,8 @@ nb_path: "nbs/backtest.ipynb"
 <span class="kn">import</span> <span class="nn">dotenv</span>
 <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 
-<span class="kn">import</span> <span class="nn">wingback.teamstrength</span>
+<span class="kn">import</span> <span class="nn">wingback.db</span>
+<span class="kn">import</span> <span class="nn">wingback.team_strength</span>
 </pre></div>
 
     </div>
@@ -199,9 +200,33 @@ nb_path: "nbs/backtest.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">matches</span> <span class="o">=</span> <span class="n">wingback</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">queries</span><span class="o">.</span><span class="n">fetch_matches</span><span class="p">(</span>
+    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+    <span class="n">start</span><span class="o">=</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">(),</span>  
+    <span class="n">end</span><span class="o">=</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">(),</span>
+    <span class="n">season_ids</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">matchdays</span> <span class="o">=</span> <span class="p">{</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;kickoff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">backtest</span> <span class="o">=</span> <span class="n">Backtest</span><span class="p">(</span>
     <span class="n">models</span><span class="o">=</span><span class="p">[</span>
         <span class="n">wingback</span><span class="o">.</span><span class="n">teamstrength</span><span class="o">.</span><span class="n">DCGoals</span><span class="p">(),</span>
+        <span class="n">wingback</span><span class="o">.</span><span class="n">teamstrength</span><span class="o">.</span><span class="n">DCxG</span><span class="p">(),</span>
     <span class="p">],</span>
     <span class="n">metrics</span><span class="o">=</span><span class="p">[</span>
         <span class="n">NLLOutcome</span><span class="p">(),</span>
@@ -211,7 +236,7 @@ nb_path: "nbs/backtest.ipynb"
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">backtest</span><span class="o">.</span><span class="n">backtest</span><span class="p">(</span>
     <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">dates</span><span class="o">=</span><span class="p">[</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()]</span>
+    <span class="n">dates</span><span class="o">=</span><span class="n">matchdays</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -225,14 +250,94 @@ nb_path: "nbs/backtest.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/ben/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py:124: RuntimeWarning: overflow encountered in multiply
-  tau = np.where((home_goals == 0) &amp; (away_goals == 0), 1 - home_rate*away_rate*rho, tau)
-/Users/ben/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py:135: RuntimeWarning: invalid value encountered in log
+<pre>/Users/ben/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py:135: RuntimeWarning: invalid value encountered in log
   np.log(self._tau(home_goals, away_goals, home_rate, away_rate, rho))
 </pre>
 </div>
 </div>
 
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-12-e52a336d9fac&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> results = backtest.backtest(
+<span class="ansi-green-intense-fg ansi-bold">     13</span>     league_ids<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">---&gt; 14</span><span class="ansi-red-fg">     </span>dates<span class="ansi-blue-fg">=</span>matchdays
+<span class="ansi-green-intense-fg ansi-bold">     15</span> )
+
+<span class="ansi-green-fg">&lt;ipython-input-4-bf1d11c5b534&gt;</span> in <span class="ansi-cyan-fg">backtest</span><span class="ansi-blue-fg">(self, league_ids, dates)</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span>             train<span class="ansi-blue-fg">,</span> test <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>fetch_data<span class="ansi-blue-fg">(</span>league_ids<span class="ansi-blue-fg">,</span> date<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     13</span>             model<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>train<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 14</span><span class="ansi-red-fg">             </span>predictions <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>predict<span class="ansi-blue-fg">(</span>test<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span> 
+<span class="ansi-green-intense-fg ansi-bold">     16</span>             results.append({
+
+<span class="ansi-green-fg">~/code/wingback/wingback/teamstrength.py</span> in <span class="ansi-cyan-fg">predict</span><span class="ansi-blue-fg">(self, data)</span>
+<span class="ansi-green-intense-fg ansi-bold">     74</span> 
+<span class="ansi-green-intense-fg ansi-bold">     75</span>     <span class="ansi-green-fg">def</span> predict<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 76</span><span class="ansi-red-fg">         </span>predictions <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_model<span class="ansi-blue-fg">.</span>predict<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     77</span>         <span class="ansi-green-fg">return</span> predictions
+<span class="ansi-green-intense-fg ansi-bold">     78</span> 
+
+<span class="ansi-green-fg">~/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py</span> in <span class="ansi-cyan-fg">predict</span><span class="ansi-blue-fg">(self, data, up_to)</span>
+<span class="ansi-green-intense-fg ansi-bold">    192</span> 
+<span class="ansi-green-intense-fg ansi-bold">    193</span>     <span class="ansi-green-fg">def</span> predict<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">,</span> up_to<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">26</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 194</span><span class="ansi-red-fg">         </span>scorelines <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>predict_one<span class="ansi-blue-fg">(</span>row<span class="ansi-blue-fg">,</span> up_to<span class="ansi-blue-fg">=</span>up_to<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> row <span class="ansi-green-fg">in</span> data<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    195</span>         <span class="ansi-green-fg">return</span> scorelines
+
+<span class="ansi-green-fg">~/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-intense-fg ansi-bold">    192</span> 
+<span class="ansi-green-intense-fg ansi-bold">    193</span>     <span class="ansi-green-fg">def</span> predict<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">,</span> up_to<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">26</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 194</span><span class="ansi-red-fg">         </span>scorelines <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>predict_one<span class="ansi-blue-fg">(</span>row<span class="ansi-blue-fg">,</span> up_to<span class="ansi-blue-fg">=</span>up_to<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> row <span class="ansi-green-fg">in</span> data<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    195</span>         <span class="ansi-green-fg">return</span> scorelines
+
+<span class="ansi-green-fg">~/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py</span> in <span class="ansi-cyan-fg">predict_one</span><span class="ansi-blue-fg">(self, row, up_to)</span>
+<span class="ansi-green-intense-fg ansi-bold">    184</span>         home_goals <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>h <span class="ansi-green-fg">for</span> h<span class="ansi-blue-fg">,</span> a <span class="ansi-green-fg">in</span> scorelines<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>         away_goals <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>a <span class="ansi-green-fg">for</span> h<span class="ansi-blue-fg">,</span> a <span class="ansi-green-fg">in</span> scorelines<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">--&gt; 186</span><span class="ansi-red-fg">         </span>home_rate <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>home_rate<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>params<span class="ansi-blue-fg">,</span> row<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    187</span>         away_rate <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>away_rate<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>params<span class="ansi-blue-fg">,</span> row<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span> 
+
+<span class="ansi-green-fg">~/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py</span> in <span class="ansi-cyan-fg">home_rate</span><span class="ansi-blue-fg">(self, params, row)</span>
+<span class="ansi-green-intense-fg ansi-bold">    106</span>         <span class="ansi-blue-fg">&#34;&#34;&#34; Returns home goalscoring rate &#34;&#34;&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    107</span>         terms <span class="ansi-blue-fg">=</span> itertools<span class="ansi-blue-fg">.</span>chain<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">[</span>b<span class="ansi-blue-fg">.</span>home_terms<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>adapter<span class="ansi-blue-fg">,</span> row<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> b <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>blocks<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 108</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> np<span class="ansi-blue-fg">.</span>exp<span class="ansi-blue-fg">(</span>sum<span class="ansi-blue-fg">(</span>params<span class="ansi-blue-fg">[</span>t<span class="ansi-blue-fg">]</span> <span class="ansi-green-fg">for</span> t <span class="ansi-green-fg">in</span> terms<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    109</span> 
+<span class="ansi-green-intense-fg ansi-bold">    110</span>     <span class="ansi-green-fg">def</span> away_rate<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> params<span class="ansi-blue-fg">,</span> row<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py</span> in <span class="ansi-cyan-fg">&lt;genexpr&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-intense-fg ansi-bold">    106</span>         <span class="ansi-blue-fg">&#34;&#34;&#34; Returns home goalscoring rate &#34;&#34;&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    107</span>         terms <span class="ansi-blue-fg">=</span> itertools<span class="ansi-blue-fg">.</span>chain<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">[</span>b<span class="ansi-blue-fg">.</span>home_terms<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>adapter<span class="ansi-blue-fg">,</span> row<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> b <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>blocks<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 108</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> np<span class="ansi-blue-fg">.</span>exp<span class="ansi-blue-fg">(</span>sum<span class="ansi-blue-fg">(</span>params<span class="ansi-blue-fg">[</span>t<span class="ansi-blue-fg">]</span> <span class="ansi-green-fg">for</span> t <span class="ansi-green-fg">in</span> terms<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    109</span> 
+<span class="ansi-green-intense-fg ansi-bold">    110</span>     <span class="ansi-green-fg">def</span> away_rate<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> params<span class="ansi-blue-fg">,</span> row<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">KeyError</span>: OffenceParameterKey(label=73)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]):</span>
+    <span class="n">mean_nll</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;NLLOutcome&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">g</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">mean_nll</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 

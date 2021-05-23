@@ -58,7 +58,7 @@ class Backtest:
             results.append({
                 'model': str(model),  # idk...
                 'date': date,
-                'predictions': predictions,
+                # 'predictions': predictions,
                 **{metric.__class__.__name__: metric.evaluate(test, predictions)
                    for metric in self.metrics}
             })

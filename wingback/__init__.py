@@ -4,6 +4,6 @@ from . import (
     db,
     understat,
     resimulation,
-    teamstrength,
+    team_strength,
     backtest,
 )

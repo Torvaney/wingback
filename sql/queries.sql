@@ -10,6 +10,21 @@ where table_schema='public'
 select * from shot where match_id = :match_id
 
 
+-- :name fetch_matchdays :many
+select distinct
+  kickoff::date as "date"
+from match
+  -- Supplying None (i.e. NULL) to any of the arguments
+  -- will result in the corresponding where clause being
+  -- ignored (i.e. it will coalesce to TRUE)
+where coalesce(kickoff::date >= :start, true)
+  and coalesce(kickoff::date < :end, true)
+  and coalesce(league_id = :league_id, true)
+  -- Constant clauses
+  and is_result = true
+order by "date"
+
+
 -- :name fetch_matches :many
 select
   match.*,
@@ -29,3 +44,16 @@ where coalesce(kickoff::date >= :start, true)
   and coalesce(league_id in :league_ids, true)
   and coalesce(season_id in :season_ids, true)
 order by kickoff
+
+
+-- :name fetch_resimulations :many
+select
+  resimulation.*,
+  match.home_team_id,
+  match.away_team_id
+from resimulation
+join match
+  on match.id = resimulation.match_id
+where match_id in :match_ids
+  and probability >= :min_probability
+order by match.kickoff
