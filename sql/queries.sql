@@ -30,7 +30,7 @@ select
   match.*,
   home.title as home_team,
   away.title as away_team,
-  date_part('day', age(:end, kickoff::date)) as days_ago
+  (:end)::date - kickoff::date as days_ago
 from match
 join team as home
   on home.id = match.home_team_id
@@ -43,6 +43,8 @@ where coalesce(kickoff::date >= :start, true)
   and coalesce(kickoff::date < :end, true)
   and coalesce(league_id in :league_ids, true)
   and coalesce(season_id in :season_ids, true)
+  -- Constant clauses
+  and is_result = true
 order by kickoff
 
 

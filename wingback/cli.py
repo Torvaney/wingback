@@ -186,6 +186,7 @@ def ingest(
                     # There's no robots.txt or ToS available on the site,
                     # So we just use a relatively conservative delay of
                     # 5 seconds per (shots) request
+                    time.sleep(5)
 
                     match_id = int(match['id'])
                     shots = client.shots(match_id)
