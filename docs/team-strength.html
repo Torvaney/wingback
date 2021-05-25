@@ -151,8 +151,8 @@ within the training data.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">benchmark_model</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">time_window</span><span class="o">=</span><span class="mi">730</span><span class="p">)</span>
-<span class="n">target_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">benchmark_model</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">()</span>
+<span class="n">target_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
 
 <span class="n">train</span> <span class="o">=</span> <span class="n">benchmark_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
     <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -185,11 +185,11 @@ within the training data.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Home team: Everton
-Away team: Manchester United
-Home win : 0.46
-Draw     : 0.21
-Away win : 0.32
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.38
+Draw     : 0.23
+Away win : 0.39
 </pre>
 </div>
 </div>
@@ -249,10 +249,9 @@ Away win : 0.32
 
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">dc_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 
-<span class="n">test_ix</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="n">test_ix</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="n">test_ix</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="n">test_ix</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -266,11 +265,11 @@ Away win : 0.32
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Home team: Tottenham
-Away team: Wolverhampton Wanderers
-Home win : 0.42
-Draw     : 0.26
-Away win : 0.32
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.43
+Draw     : 0.28
+Away win : 0.28
 </pre>
 </div>
 </div>
@@ -292,7 +291,7 @@ Away win : 0.32
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCxG" class="doc_header"><code>class</code> <code>DCxG</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L173" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxG</code>(<strong><code>min_probability</code></strong>=<em><code>0.1</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+<h2 id="DCxG" class="doc_header"><code>class</code> <code>DCxG</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L173" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxG</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
 </blockquote>
 
 </div>
@@ -329,10 +328,9 @@ Away win : 0.32
 
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">xg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 
-<span class="n">test_ix</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="n">test_ix</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="n">test_ix</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="n">test_ix</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -345,12 +343,21 @@ Away win : 0.32
 
 <div class="output_area">
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/ben/code/wingback/venv/lib/python3.7/site-packages/mezzala/models.py:134: RuntimeWarning: overflow encountered in multiply
+  tau = np.where((home_goals == 0) &amp; (away_goals == 0), 1 - home_rate*away_rate*rho, tau)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Home team: Tottenham
-Away team: Wolverhampton Wanderers
-Home win : 0.26
-Draw     : 0.33
-Away win : 0.41
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.60
+Draw     : 0.22
+Away win : 0.17
 </pre>
 </div>
 </div>
@@ -378,10 +385,9 @@ Away win : 0.41
 
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">xg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 
-<span class="n">test_ix</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="n">test_ix</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="n">test_ix</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="n">test_ix</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -395,11 +401,11 @@ Away win : 0.41
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Home team: Tottenham
-Away team: Wolverhampton Wanderers
-Home win : 0.19
-Draw     : 0.31
-Away win : 0.50
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.75
+Draw     : 0.16
+Away win : 0.09
 </pre>
 </div>
 </div>
@@ -429,8 +435,8 @@ Away win : 0.50
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([-0.0126169 , -0.00580894, -0.00402651, -0.00295564, -0.00218769,
-       -0.00158854, -0.0010972 , -0.00068072, -0.00031927,  0.        ])</pre>
+<pre>array([-0.0126169 , -0.00593881, -0.00416217, -0.00309335, -0.00232644,
+       -0.00172793, -0.00123701, -0.00082083, -0.00045962, -0.00014053])</pre>
 </div>
 
 </div>
@@ -463,15 +469,15 @@ Away win : 0.50
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>For eps=-0.012617,	0.10320 @180d,	0.01065 @360d
-For eps=-0.005809,	0.35148 @180d,	0.12354 @360d
-For eps=-0.004027,	0.48444 @180d,	0.23468 @360d
-For eps=-0.002956,	0.58742 @180d,	0.34506 @360d
-For eps=-0.002188,	0.67450 @180d,	0.45495 @360d
-For eps=-0.001589,	0.75131 @180d,	0.56447 @360d
-For eps=-0.001097,	0.82078 @180d,	0.67369 @360d
-For eps=-0.000681,	0.88468 @180d,	0.78266 @360d
-For eps=-0.000319,	0.94415 @180d,	0.89142 @360d
-For eps=0.000000,	1.00000 @180d,	1.00000 @360d
+For eps=-0.005939,	0.34336 @180d,	0.11789 @360d
+For eps=-0.004162,	0.47275 @180d,	0.22349 @360d
+For eps=-0.003093,	0.57304 @180d,	0.32837 @360d
+For eps=-0.002326,	0.65786 @180d,	0.43278 @360d
+For eps=-0.001728,	0.73269 @180d,	0.53684 @360d
+For eps=-0.001237,	0.80039 @180d,	0.64062 @360d
+For eps=-0.000821,	0.86265 @180d,	0.74416 @360d
+For eps=-0.000460,	0.92060 @180d,	0.84750 @360d
+For eps=-0.000141,	0.97502 @180d,	0.95067 @360d
 </pre>
 </div>
 </div>
@@ -511,27 +517,27 @@ For eps=0.000000,	1.00000 @180d,	1.00000 @360d
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;benchmark&#39;: &lt;__main__.Benchmark at 0x1294a0518&gt;,
- &#39;dixon-coles-0.012617&#39;: &lt;__main__.DCGoals at 0x1294a0c18&gt;,
- &#39;dixon-coles-xg-0.012617&#39;: &lt;__main__.DCxG at 0x129537f98&gt;,
- &#39;dixon-coles-0.005809&#39;: &lt;__main__.DCGoals at 0x129415550&gt;,
- &#39;dixon-coles-xg-0.005809&#39;: &lt;__main__.DCxG at 0x1294152b0&gt;,
- &#39;dixon-coles-0.004027&#39;: &lt;__main__.DCGoals at 0x1294b4a58&gt;,
- &#39;dixon-coles-xg-0.004027&#39;: &lt;__main__.DCxG at 0x1294b4da0&gt;,
- &#39;dixon-coles-0.002956&#39;: &lt;__main__.DCGoals at 0x1294b42e8&gt;,
- &#39;dixon-coles-xg-0.002956&#39;: &lt;__main__.DCxG at 0x1295b9940&gt;,
- &#39;dixon-coles-0.002188&#39;: &lt;__main__.DCGoals at 0x12943da20&gt;,
- &#39;dixon-coles-xg-0.002188&#39;: &lt;__main__.DCxG at 0x129415278&gt;,
- &#39;dixon-coles-0.001589&#39;: &lt;__main__.DCGoals at 0x1295b9630&gt;,
- &#39;dixon-coles-xg-0.001589&#39;: &lt;__main__.DCxG at 0x1295b9240&gt;,
- &#39;dixon-coles-0.001097&#39;: &lt;__main__.DCGoals at 0x1295b94a8&gt;,
- &#39;dixon-coles-xg-0.001097&#39;: &lt;__main__.DCxG at 0x10f03f2b0&gt;,
- &#39;dixon-coles-0.000681&#39;: &lt;__main__.DCGoals at 0x12958bac8&gt;,
- &#39;dixon-coles-xg-0.000681&#39;: &lt;__main__.DCxG at 0x12958bd30&gt;,
- &#39;dixon-coles-0.000319&#39;: &lt;__main__.DCGoals at 0x12958bf98&gt;,
- &#39;dixon-coles-xg-0.000319&#39;: &lt;__main__.DCxG at 0x129548240&gt;,
- &#39;dixon-coles0.000000&#39;: &lt;__main__.DCGoals at 0x1295484a8&gt;,
- &#39;dixon-coles-xg0.000000&#39;: &lt;__main__.DCxG at 0x129548710&gt;}</pre>
+<pre>{&#39;benchmark&#39;: &lt;__main__.Benchmark at 0x12841d278&gt;,
+ &#39;dixon-coles-0.012617&#39;: &lt;__main__.DCGoals at 0x12841d518&gt;,
+ &#39;dixon-coles-xg-0.012617&#39;: &lt;__main__.DCxG at 0x12841da90&gt;,
+ &#39;dixon-coles-0.005939&#39;: &lt;__main__.DCGoals at 0x12841dda0&gt;,
+ &#39;dixon-coles-xg-0.005939&#39;: &lt;__main__.DCxG at 0x1283d2128&gt;,
+ &#39;dixon-coles-0.004162&#39;: &lt;__main__.DCGoals at 0x1283d25f8&gt;,
+ &#39;dixon-coles-xg-0.004162&#39;: &lt;__main__.DCxG at 0x1283d2cf8&gt;,
+ &#39;dixon-coles-0.003093&#39;: &lt;__main__.DCGoals at 0x1283ef1d0&gt;,
+ &#39;dixon-coles-xg-0.003093&#39;: &lt;__main__.DCxG at 0x1283ef4e0&gt;,
+ &#39;dixon-coles-0.002326&#39;: &lt;__main__.DCGoals at 0x1283e8828&gt;,
+ &#39;dixon-coles-xg-0.002326&#39;: &lt;__main__.DCxG at 0x1283004a8&gt;,
+ &#39;dixon-coles-0.001728&#39;: &lt;__main__.DCGoals at 0x1283008d0&gt;,
+ &#39;dixon-coles-xg-0.001728&#39;: &lt;__main__.DCxG at 0x128300f98&gt;,
+ &#39;dixon-coles-0.001237&#39;: &lt;__main__.DCGoals at 0x1283032b0&gt;,
+ &#39;dixon-coles-xg-0.001237&#39;: &lt;__main__.DCxG at 0x128303588&gt;,
+ &#39;dixon-coles-0.000821&#39;: &lt;__main__.DCGoals at 0x128303828&gt;,
+ &#39;dixon-coles-xg-0.000821&#39;: &lt;__main__.DCxG at 0x1282c49e8&gt;,
+ &#39;dixon-coles-0.000460&#39;: &lt;__main__.DCGoals at 0x1281fbe80&gt;,
+ &#39;dixon-coles-xg-0.000460&#39;: &lt;__main__.DCxG at 0x128303e48&gt;,
+ &#39;dixon-coles-0.000141&#39;: &lt;__main__.DCGoals at 0x128377b00&gt;,
+ &#39;dixon-coles-xg-0.000141&#39;: &lt;__main__.DCxG at 0x1283071d0&gt;}</pre>
 </div>
 
 </div>

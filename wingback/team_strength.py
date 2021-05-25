@@ -171,7 +171,7 @@ class DCGoals(ModelABC):
 
 
 class DCxG(ModelABC):
-    def __init__(self, min_probability=0.1, time_window=360, epsilon=-0.0065):
+    def __init__(self, min_probability=0.01, time_window=360, epsilon=-0.0065):
         self._time_window = time_window
         self._epsilon = epsilon
         self.min_probability = min_probability
@@ -271,4 +271,4 @@ MODEL_REGISTRY['benchmark'] = Benchmark(time_window=730)
 
 for eps in eps_values:
     MODEL_REGISTRY[f'dixon-coles{eps:0.6f}'] = DCGoals(time_window=730, epsilon=eps)
-    MODEL_REGISTRY[f'dixon-coles-xg{eps:0.6f}'] = DCxG(time_window=730, epsilon=eps, min_probability=0.05)
+    MODEL_REGISTRY[f'dixon-coles-xg{eps:0.6f}'] = DCxG(time_window=730, epsilon=eps, min_probability=0.01)
