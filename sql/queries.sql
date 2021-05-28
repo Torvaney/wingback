@@ -59,3 +59,12 @@ join match
 where match_id in :match_ids
   and probability >= :min_probability
 order by match.kickoff
+
+
+-- :name fetch_backtest :one
+select *
+from base_backtest
+where model = :model
+  and league_id in :league_ids
+  and date = (:date)::date
+limit 1
