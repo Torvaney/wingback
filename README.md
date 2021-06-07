@@ -2,9 +2,13 @@
 > Testing team strength models in Python
 
 
-Because it's backtesting... gettit? Wing _back_? I'll show myself out.
+Because it's backtesting... gettit? Wing _back_? ... Yeah, I'll show myself out.
 
 ## Usage
+
+### Initial setup
+
+This project is built on top of [`understat-db`](https://github.com/Torvaney/understat-db). The initial setup is the same.
 
 The simplest way to get started is to populate a local database with `docker-compose`.
 
@@ -27,14 +31,30 @@ Run the database
 
 ```bash
 docker-compose up -d db   # Start a postgres database within a docker container
-understat-db migrate      # Create base database tables
+wingback migrate      # Create base database tables
 ```
 
 Finally, import the data you want
 
 ```bash
-understat-db ingest --leagues EPL --seasons 2020
+wingback ingest --leagues EPL --seasons 2020
 ```
+
+### Backtesting
+
+The xG-based models require match simulations to be present in the database. You can generate these with the `resimulate` command:
+
+```bash
+wingback resimulate --leagues EPL --seasons 2020
+```
+
+Finally, to backtest the models, you can use the `backtest` command:
+
+```bash
+wingback backtest --league EPL --start-date 2021-01-01
+```
+
+Note that the full suite of models is very large (see `wingback backtest --help`) and takes a long time to run. You can select specific models using the `--models` flag.
 
 ## Requirements
 

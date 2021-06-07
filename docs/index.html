@@ -31,14 +31,15 @@ nb_path: "nbs/index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Because it's backtesting... gettit? Wing <em>back</em>? I'll show myself out.</p>
+<p>Because it's backtesting... gettit? Wing <em>back</em>? ... Yeah, I'll show myself out.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Usage">Usage<a class="anchor-link" href="#Usage"> </a></h2><p>The simplest way to get started is to populate a local database with <code>docker-compose</code>.</p>
+<h2 id="Usage">Usage<a class="anchor-link" href="#Usage"> </a></h2><h3 id="Initial-setup">Initial setup<a class="anchor-link" href="#Initial-setup"> </a></h3><p>This project is built on top of <code>understat-db</code>. The initial setup is the same.</p>
+<p>The simplest way to get started is to populate a local database with <code>docker-compose</code>.</p>
 <p>First, clone the repository:</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/Torvaney/understat-db.git
 <span class="nb">cd</span> understat-db
@@ -50,11 +51,18 @@ cp .env.sample .env       <span class="c1"># Copy default environment vars to .e
 </pre></div>
 <p>Run the database</p>
 <div class="highlight"><pre><span></span>docker-compose up -d db   <span class="c1"># Start a postgres database within a docker container</span>
-understat-db migrate      <span class="c1"># Create base database tables</span>
+wingback migrate      <span class="c1"># Create base database tables</span>
 </pre></div>
 <p>Finally, import the data you want</p>
-<div class="highlight"><pre><span></span>understat-db ingest --leagues EPL --seasons <span class="m">2020</span>
+<div class="highlight"><pre><span></span>wingback ingest --leagues EPL --seasons <span class="m">2020</span>
 </pre></div>
+<h3 id="Backtesting">Backtesting<a class="anchor-link" href="#Backtesting"> </a></h3><p>The xG-based models require match simulations to be present in the database. You can generate these with the <a href="/wingback/cli.html#resimulate"><code>resimulate</code></a> command:</p>
+<div class="highlight"><pre><span></span>wingback resimulate --leagues EPL --seasons <span class="m">2020</span>
+</pre></div>
+<p>Finally, to backtest the models, you can use the <a href="/wingback/backtest.html"><code>backtest</code></a> command:</p>
+<div class="highlight"><pre><span></span>wingback backtest --league EPL --start-date <span class="m">2021</span>-01-01
+</pre></div>
+<p>Note that the full suite of models is very large (see <code>wingback backtest --help</code>) and takes a long time to run. You can select specific models using the <code>--models</code> flag.</p>
 <h2 id="Requirements">Requirements<a class="anchor-link" href="#Requirements"> </a></h2><p>To run this project you will need:</p>
 <ul>
 <li>Python 3.6+</li>
