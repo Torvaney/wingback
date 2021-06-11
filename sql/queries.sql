@@ -28,6 +28,8 @@ order by "date"
 -- :name fetch_matches :many
 select
   match.*,
+  match_xg.home_xg as naive_home_xg,
+  match_xg.away_xg as naive_away_xg,
   home.title as home_team,
   away.title as away_team,
   (:end)::date - kickoff::date as days_ago
@@ -36,6 +38,8 @@ join team as home
   on home.id = match.home_team_id
 join team as away
   on away.id = match.away_team_id
+left join match_xg
+  on match_xg.match_id = match.id
   -- Supplying None (i.e. NULL) to any of the arguments
   -- will result in the corresponding where clause being
   -- ignored (i.e. it will coalesce to TRUE)
