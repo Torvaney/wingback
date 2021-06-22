@@ -19,6 +19,9 @@ entries:
       title: Database
       url: db.html
     - output: web,pdf
+      title: Title
+      url: fivethirtyeight.html
+    - output: web,pdf
       title: Match resimulation
       url: resimulation.html
     - output: web,pdf

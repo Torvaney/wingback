@@ -6,4 +6,5 @@ from . import (
     resimulation,
     team_strength,
     backtest,
+    fivethirtyeight
 )
