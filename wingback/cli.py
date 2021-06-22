@@ -340,7 +340,6 @@ def backtest(
                             wingback.db.Backtest.date==date,
                         ).execute()
 
-
                     wingback.db.Backtest.create(
                         model=model_name,
                         league_id=league_id,
