@@ -204,7 +204,7 @@ def ingest(
                     )
 
     # Rebuild tables in dbt
-    build_tables(args=['--models', 'staging'])
+    build_tables(args=['--models', 'understat'])
 
 # Cell
 
@@ -217,17 +217,17 @@ def ingest_538(
 
     initialize_db()
 
-    # Check if 538 data already exists
-    if (not refresh) and list(wingback.db.Fivethirtyeight.select().execute()):
-        return None
+    # Only import if refreshing or if no 538 data already exists
+    if refresh or not list(wingback.db.Fivethirtyeight.select().execute()):
+        with wingback.db.DB.atomic():
+            wingback.db.Fivethirtyeight.delete().execute()
 
-    with wingback.db.DB.atomic():
-        wingback.db.Fivethirtyeight.delete().execute()
+            __ = wingback.db.Fivethirtyeight.create(
+                json=wingback.fivethirtyeight.fetch_data()
+            )
 
-        __ = wingback.db.Fivethirtyeight.create(
-            json=wingback.fivethirtyeight.fetch_data()
-        )
-
+    # Rebuild tables in dbt
+    build_tables(args=['--models', 'fivethirtyeight'])
 
 # Cell
 
