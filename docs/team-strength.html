@@ -76,29 +76,6 @@ nb_path: "nbs/team-strength.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-6b9b531a3ab5&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> dotenv<span class="ansi-blue-fg">.</span>load_dotenv<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> 
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> wingback.db.queries.connect(&#39;postgresql://{user}:{password}@{host}:{port}/{database}&#39;.format(
-</span><span class="ansi-green-intense-fg ansi-bold">      4</span>     host<span class="ansi-blue-fg">=</span>os<span class="ansi-blue-fg">.</span>environ<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;DB_HOST&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     user<span class="ansi-blue-fg">=</span>os<span class="ansi-blue-fg">.</span>environ<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;DB_USER&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;wingback&#39; is not defined</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -207,25 +184,13 @@ within the training data.</p>
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-10-e41c5d502c3a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> train = benchmark_model.fetch_data(
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     league_ids<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">     </span>date<span class="ansi-blue-fg">=</span>target_date
-<span class="ansi-green-intense-fg ansi-bold">      7</span> )
-<span class="ansi-green-intense-fg ansi-bold">      8</span> benchmark_model<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>train<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-9-ff28895f737e&gt;</span> in <span class="ansi-cyan-fg">fetch_data</span><span class="ansi-blue-fg">(self, league_ids, date)</span>
-<span class="ansi-green-intense-fg ansi-bold">     20</span> 
-<span class="ansi-green-intense-fg ansi-bold">     21</span>     <span class="ansi-green-fg">def</span> fetch_data<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> league_ids<span class="ansi-blue-fg">,</span> date<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 22</span><span class="ansi-red-fg">         training_data = wingback.db.queries.fetch_matches(
-</span><span class="ansi-green-intense-fg ansi-bold">     23</span>             start<span class="ansi-blue-fg">=</span>date<span class="ansi-blue-fg">-</span>self<span class="ansi-blue-fg">.</span>time_window<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">     24</span>             end<span class="ansi-blue-fg">=</span>date<span class="ansi-blue-fg">,</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;wingback&#39; is not defined</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.39
+Draw     : 0.23
+Away win : 0.38
+</pre>
 </div>
 </div>
 
@@ -294,6 +259,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.42
+Draw     : 0.30
+Away win : 0.28
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -355,6 +338,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.57
+Draw     : 0.24
+Away win : 0.19
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -382,6 +383,24 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.58
+Draw     : 0.25
+Away win : 0.16
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -450,6 +469,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.51
+Draw     : 0.28
+Away win : 0.22
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -480,6 +517,24 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.46
+Draw     : 0.29
+Away win : 0.25
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -516,6 +571,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.55
+Draw     : 0.26
+Away win : 0.19
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -530,7 +603,7 @@ within the training data.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCxGTotals" class="doc_header"><code>class</code> <code>DCxGTotals</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L367" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxGTotals</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+<h2 id="DCxGTotals" class="doc_header"><code>class</code> <code>DCxGTotals</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L383" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxGTotals</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
 </blockquote>
 
 </div>
@@ -578,6 +651,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.57
+Draw     : 0.26
+Away win : 0.17
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -592,7 +683,87 @@ within the training data.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCRhoTransplant" class="doc_header"><code>class</code> <code>DCRhoTransplant</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L456" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCRhoTransplant</code>(<strong><code>primary_model</code></strong>, <strong><code>rho_model</code></strong>, <strong><code>time_window</code></strong>=<em><code>360</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+<h2 id="DCNonShotxG" class="doc_header"><code>class</code> <code>DCNonShotxG</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L458" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCNonShotxG</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ns_xg_model</span> <span class="o">=</span> <span class="n">DCNonShotxG</span><span class="p">()</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">ns_xg_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
+    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">date</span><span class="o">=</span><span class="n">target_date</span>
+<span class="p">)</span>
+
+<span class="n">ns_xg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">ns_xg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.48
+Draw     : 0.29
+Away win : 0.23
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="DCRhoTransplant" class="doc_header"><code>class</code> <code>DCRhoTransplant</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L528" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCRhoTransplant</code>(<strong><code>primary_model</code></strong>, <strong><code>rho_model</code></strong>, <strong><code>time_window</code></strong>=<em><code>360</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
 </blockquote>
 
 </div>
@@ -639,6 +810,24 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.58
+Draw     : 0.25
+Away win : 0.17
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 

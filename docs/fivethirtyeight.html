@@ -1,13 +1,13 @@
 ---
 
-title: Title
+title: FiveThirtyEight
 
 
 keywords: fastai
 sidebar: home_sidebar
 
-
-
+summary: "A module for fetching data from fivethirtyeight.com"
+description: "A module for fetching data from fivethirtyeight.com"
 nb_path: "nbs/fivethirtyeight.ipynb"
 ---
 <!--
@@ -25,6 +25,187 @@ nb_path: "nbs/fivethirtyeight.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="fetch_data" class="doc_header"><code>fetch_data</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/fivethirtyeight.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_data</code>()</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">fetch_data</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">676</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;season&#39;: &#39;2016&#39;,
+ &#39;date&#39;: &#39;2016-11-20&#39;,
+ &#39;league_id&#39;: &#39;1843&#39;,
+ &#39;league&#39;: &#39;French Ligue 1&#39;,
+ &#39;team1&#39;: &#39;Marseille&#39;,
+ &#39;team2&#39;: &#39;Caen&#39;,
+ &#39;spi1&#39;: &#39;58.89&#39;,
+ &#39;spi2&#39;: &#39;53.12&#39;,
+ &#39;prob1&#39;: &#39;0.4982&#39;,
+ &#39;prob2&#39;: &#39;0.2125&#39;,
+ &#39;probtie&#39;: &#39;0.2893&#39;,
+ &#39;proj_score1&#39;: &#39;1.59&#39;,
+ &#39;proj_score2&#39;: &#39;0.95&#39;,
+ &#39;importance1&#39;: &#39;22.1&#39;,
+ &#39;importance2&#39;: &#39;28.2&#39;,
+ &#39;score1&#39;: &#39;1&#39;,
+ &#39;score2&#39;: &#39;0&#39;,
+ &#39;xg1&#39;: &#39;1.71&#39;,
+ &#39;xg2&#39;: &#39;0.08&#39;,
+ &#39;nsxg1&#39;: &#39;1.71&#39;,
+ &#39;nsxg2&#39;: &#39;0.4&#39;,
+ &#39;adj_score1&#39;: &#39;1.05&#39;,
+ &#39;adj_score2&#39;: &#39;0.0&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">{(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;league_id&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;league&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{(&#39;1818&#39;, &#39;UEFA Champions League&#39;),
+ (&#39;1820&#39;, &#39;UEFA Europa League&#39;),
+ (&#39;1827&#39;, &#39;Austrian T-Mobile Bundesliga&#39;),
+ (&#39;1832&#39;, &#39;Belgian Jupiler League&#39;),
+ (&#39;1837&#39;, &#39;Danish SAS-Ligaen&#39;),
+ (&#39;1843&#39;, &#39;French Ligue 1&#39;),
+ (&#39;1844&#39;, &#39;French Ligue 2&#39;),
+ (&#39;1845&#39;, &#39;German Bundesliga&#39;),
+ (&#39;1846&#39;, &#39;German 2. Bundesliga&#39;),
+ (&#39;1849&#39;, &#39;Dutch Eredivisie&#39;),
+ (&#39;1854&#39;, &#39;Italy Serie A&#39;),
+ (&#39;1856&#39;, &#39;Italy Serie B&#39;),
+ (&#39;1859&#39;, &#39;Norwegian Tippeligaen&#39;),
+ (&#39;1864&#39;, &#39;Portuguese Liga&#39;),
+ (&#39;1866&#39;, &#39;Russian Premier Liga&#39;),
+ (&#39;1869&#39;, &#39;Spanish Primera Division&#39;),
+ (&#39;1871&#39;, &#39;Spanish Segunda Division&#39;),
+ (&#39;1874&#39;, &#39;Swedish Allsvenskan&#39;),
+ (&#39;1879&#39;, &#39;Swiss Raiffeisen Super League&#39;),
+ (&#39;1882&#39;, &#39;Turkish Turkcell Super Lig&#39;),
+ (&#39;1884&#39;, &#39;Greek Super League&#39;),
+ (&#39;1947&#39;, &#39;Japanese J League&#39;),
+ (&#39;1948&#39;, &#39;Australian A-League&#39;),
+ (&#39;1951&#39;, &#39;Major League Soccer&#39;),
+ (&#39;1952&#39;, &#39;Mexican Primera Division Torneo Apertura&#39;),
+ (&#39;1975&#39;, &#39;Mexican Primera Division Torneo Clausura&#39;),
+ (&#39;1979&#39;, &#39;Chinese Super League&#39;),
+ (&#39;1983&#39;, &#39;South African ABSA Premier League&#39;),
+ (&#39;2105&#39;, &#39;Brasileiro SÃ©rie A&#39;),
+ (&#39;2160&#39;, &#39;United Soccer League&#39;),
+ (&#39;2411&#39;, &#39;Barclays Premier League&#39;),
+ (&#39;2412&#39;, &#39;English League Championship&#39;),
+ (&#39;2413&#39;, &#39;English League One&#39;),
+ (&#39;2414&#39;, &#39;English League Two&#39;),
+ (&#39;2417&#39;, &#39;Scottish Premiership&#39;),
+ (&#39;4582&#39;, &#34;National Women&#39;s Soccer League&#34;),
+ (&#39;5641&#39;, &#39;Argentina Primera Division&#39;),
+ (&#39;7921&#39;, &#34;FA Women&#39;s Super League&#34;),
+ (&#39;9541&#39;, &#39;NWSL Challenge Cup&#39;)}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}

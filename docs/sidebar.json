@@ -4,7 +4,8 @@
     "Backtesting ": "backtest.html",
     "Understat-DB CLI": "cli.html",
     "Database": "db.html",
-    "Title": "fivethirtyeight.html",
+    "FiveThirtyEight": "fivethirtyeight.html",
+    "Title": "match-teams.html",
     "Match resimulation": "resimulation.html",
     "Team strength": "team-strength.html",
     "Understat": "understat.html"

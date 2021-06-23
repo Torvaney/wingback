@@ -19,8 +19,11 @@ entries:
       title: Database
       url: db.html
     - output: web,pdf
-      title: Title
+      title: FiveThirtyEight
       url: fivethirtyeight.html
+    - output: web,pdf
+      title: Title
+      url: match-teams.html
     - output: web,pdf
       title: Match resimulation
       url: resimulation.html
