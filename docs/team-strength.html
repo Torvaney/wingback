@@ -418,7 +418,167 @@ Away win : 0.16
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCEnsemble" class="doc_header"><code>class</code> <code>DCEnsemble</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L272" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCEnsemble</code>(<strong><code>models</code></strong>=<em><code>[]</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+<h2 id="DCxGTotals" class="doc_header"><code>class</code> <code>DCxGTotals</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L288" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxGTotals</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dc_totals_model</span> <span class="o">=</span> <span class="n">DCxGTotals</span><span class="p">()</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">dc_totals_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
+    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">date</span><span class="o">=</span><span class="n">target_date</span>
+<span class="p">)</span>
+
+<span class="n">dc_totals_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">dc_totals_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.57
+Draw     : 0.26
+Away win : 0.17
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="DCNonShotxG" class="doc_header"><code>class</code> <code>DCNonShotxG</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L363" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCNonShotxG</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ns_xg_model</span> <span class="o">=</span> <span class="n">DCNonShotxG</span><span class="p">()</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">ns_xg_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
+    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">date</span><span class="o">=</span><span class="n">target_date</span>
+<span class="p">)</span>
+
+<span class="n">ns_xg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">ns_xg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.48
+Draw     : 0.29
+Away win : 0.23
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="DCEnsemble" class="doc_header"><code>class</code> <code>DCEnsemble</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L433" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCEnsemble</code>(<strong><code>models</code></strong>=<em><code>[]</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
 </blockquote>
 
 </div>
@@ -603,166 +763,6 @@ Away win : 0.19
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCxGTotals" class="doc_header"><code>class</code> <code>DCxGTotals</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L383" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCxGTotals</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dc_totals_model</span> <span class="o">=</span> <span class="n">DCxGTotals</span><span class="p">()</span>
-
-<span class="n">train</span> <span class="o">=</span> <span class="n">dc_totals_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
-    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">date</span><span class="o">=</span><span class="n">target_date</span>
-<span class="p">)</span>
-
-<span class="n">dc_totals_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">dc_totals_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Home team: Chelsea
-Away team: Arsenal
-Home win : 0.57
-Draw     : 0.26
-Away win : 0.17
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="DCNonShotxG" class="doc_header"><code>class</code> <code>DCNonShotxG</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L458" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCNonShotxG</code>(<strong><code>min_probability</code></strong>=<em><code>0.01</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>, <strong><code>epsilon</code></strong>=<em><code>-0.0065</code></em>, <strong><code>params</code></strong>=<em><code>None</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ns_xg_model</span> <span class="o">=</span> <span class="n">DCNonShotxG</span><span class="p">()</span>
-
-<span class="n">train</span> <span class="o">=</span> <span class="n">ns_xg_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
-    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">date</span><span class="o">=</span><span class="n">target_date</span>
-<span class="p">)</span>
-
-<span class="n">ns_xg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">ns_xg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Home team: Chelsea
-Away team: Arsenal
-Home win : 0.48
-Draw     : 0.29
-Away win : 0.23
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
 <h2 id="DCRhoTransplant" class="doc_header"><code>class</code> <code>DCRhoTransplant</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L528" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCRhoTransplant</code>(<strong><code>primary_model</code></strong>, <strong><code>rho_model</code></strong>, <strong><code>time_window</code></strong>=<em><code>360</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
 </blockquote>
 
@@ -834,6 +834,89 @@ Away win : 0.17
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="DCEnsembleTeams" class="doc_header"><code>class</code> <code>DCEnsembleTeams</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/team_strength.py#L597" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DCEnsembleTeams</code>(<strong><code>models</code></strong>=<em><code>[]</code></em>, <strong><code>time_window</code></strong>=<em><code>360</code></em>) :: <a href="/wingback/team-strength.html#ModelABC"><code>ModelABC</code></a></p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">team_ensemble_model</span> <span class="o">=</span> <span class="n">DCEnsembleTeams</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;dixon-coles-0.001568&#39;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> 
+    <span class="p">(</span><span class="s1">&#39;dixon-coles-xg-0.003234&#39;</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">),</span> 
+    <span class="p">(</span><span class="s1">&#39;dixon-coles-ns-xg-0.003234&#39;</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">team_ensemble_model</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span>
+    <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">date</span><span class="o">=</span><span class="n">target_date</span>
+<span class="p">)</span>
+<span class="n">team_ensemble_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">team_ensemble_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Home team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;home_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Away team: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;away_team&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="n">mezzala</span><span class="o">.</span><span class="n">scorelines_to_outcomes</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">probability</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.54
+Draw     : 0.26
+Away win : 0.20
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Model-registry">Model registry<a class="anchor-link" href="#Model-registry"> </a></h2><p>Register models for use with the CLI</p>
@@ -844,6 +927,23 @@ Away win : 0.17
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-0.00820749, -0.00471991, -0.00323409, -0.00227608, -0.00156766,
+       -0.00100529, -0.00053893, -0.00014053])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -860,6 +960,27 @@ Away win : 0.17
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>For eps=-0.008207,	0.22824 @180d,	0.05209 @360d
+For eps=-0.004720,	0.42759 @180d,	0.18284 @360d
+For eps=-0.003234,	0.55870 @180d,	0.31215 @360d
+For eps=-0.002276,	0.66385 @180d,	0.44070 @360d
+For eps=-0.001568,	0.75414 @180d,	0.56873 @360d
+For eps=-0.001005,	0.83448 @180d,	0.69635 @360d
+For eps=-0.000539,	0.90755 @180d,	0.82365 @360d
+For eps=-0.000141,	0.97502 @180d,	0.95067 @360d
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -884,6 +1005,81 @@ Away win : 0.17
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;benchmark&#39;: &lt;__main__.Benchmark at 0x125218a58&gt;,
+ &#39;dixon-coles-0.008207&#39;: &lt;__main__.DCGoals at 0x125218b00&gt;,
+ &#39;dixon-coles-xg-0.008207&#39;: &lt;__main__.DCxG at 0x125218630&gt;,
+ &#39;dixon-coles-ns-xg-0.008207&#39;: &lt;__main__.DCNonShotxG at 0x1251d5080&gt;,
+ &#39;dixon-coles-0.004720&#39;: &lt;__main__.DCGoals at 0x1251d52e8&gt;,
+ &#39;dixon-coles-xg-0.004720&#39;: &lt;__main__.DCxG at 0x1251d5550&gt;,
+ &#39;dixon-coles-ns-xg-0.004720&#39;: &lt;__main__.DCNonShotxG at 0x1251d57b8&gt;,
+ &#39;dixon-coles-0.003234&#39;: &lt;__main__.DCGoals at 0x1251719b0&gt;,
+ &#39;dixon-coles-xg-0.003234&#39;: &lt;__main__.DCxG at 0x125608cc0&gt;,
+ &#39;dixon-coles-ns-xg-0.003234&#39;: &lt;__main__.DCNonShotxG at 0x125608f28&gt;,
+ &#39;dixon-coles-0.002276&#39;: &lt;__main__.DCGoals at 0x12520b1d0&gt;,
+ &#39;dixon-coles-xg-0.002276&#39;: &lt;__main__.DCxG at 0x12520b438&gt;,
+ &#39;dixon-coles-ns-xg-0.002276&#39;: &lt;__main__.DCNonShotxG at 0x1253ebc18&gt;,
+ &#39;dixon-coles-0.001568&#39;: &lt;__main__.DCGoals at 0x1253ebe80&gt;,
+ &#39;dixon-coles-xg-0.001568&#39;: &lt;__main__.DCxG at 0x1251ed128&gt;,
+ &#39;dixon-coles-ns-xg-0.001568&#39;: &lt;__main__.DCNonShotxG at 0x1251ed390&gt;,
+ &#39;dixon-coles-0.001005&#39;: &lt;__main__.DCGoals at 0x1251ed5f8&gt;,
+ &#39;dixon-coles-xg-0.001005&#39;: &lt;__main__.DCxG at 0x1251ed860&gt;,
+ &#39;dixon-coles-ns-xg-0.001005&#39;: &lt;__main__.DCNonShotxG at 0x125184eb8&gt;,
+ &#39;dixon-coles-0.000539&#39;: &lt;__main__.DCGoals at 0x1251e99b0&gt;,
+ &#39;dixon-coles-xg-0.000539&#39;: &lt;__main__.DCxG at 0x1251e9c18&gt;,
+ &#39;dixon-coles-ns-xg-0.000539&#39;: &lt;__main__.DCNonShotxG at 0x1251e9e80&gt;,
+ &#39;dixon-coles-0.000141&#39;: &lt;__main__.DCGoals at 0x1251db128&gt;,
+ &#39;dixon-coles-xg-0.000141&#39;: &lt;__main__.DCxG at 0x1251db390&gt;,
+ &#39;dixon-coles-ns-xg-0.000141&#39;: &lt;__main__.DCNonShotxG at 0x1251db5f8&gt;,
+ &#39;ensemble-0.05000&#39;: &lt;__main__.DCEnsemble at 0x1251db860&gt;,
+ &#39;ensemble-0.17857&#39;: &lt;__main__.DCEnsemble at 0x1251dba90&gt;,
+ &#39;ensemble-0.30714&#39;: &lt;__main__.DCEnsemble at 0x1251dbcc0&gt;,
+ &#39;ensemble-0.43571&#39;: &lt;__main__.DCEnsemble at 0x1251dbef0&gt;,
+ &#39;ensemble-0.56429&#39;: &lt;__main__.DCEnsemble at 0x1253fd160&gt;,
+ &#39;ensemble-0.69286&#39;: &lt;__main__.DCEnsemble at 0x1253fd390&gt;,
+ &#39;ensemble-0.82143&#39;: &lt;__main__.DCEnsemble at 0x1253fd5c0&gt;,
+ &#39;ensemble-0.95000&#39;: &lt;__main__.DCEnsemble at 0x1253fd7f0&gt;,
+ &#39;ensemble-ns-xg-0.198-0.160-0.642&#39;: &lt;__main__.DCEnsemble at 0x1253fdb00&gt;,
+ &#39;ensemble-ns-xg-0.591-0.033-0.376&#39;: &lt;__main__.DCEnsemble at 0x1253fdd30&gt;,
+ &#39;ensemble-ns-xg-0.192-0.498-0.309&#39;: &lt;__main__.DCEnsemble at 0x1253fdf60&gt;,
+ &#39;ensemble-ns-xg-0.459-0.211-0.330&#39;: &lt;__main__.DCEnsemble at 0x1253f11d0&gt;,
+ &#39;ensemble-ns-xg-0.793-0.199-0.008&#39;: &lt;__main__.DCEnsemble at 0x1253f1400&gt;,
+ &#39;ensemble-ns-xg-0.353-0.192-0.455&#39;: &lt;__main__.DCEnsemble at 0x1253f1630&gt;,
+ &#39;ensemble-ns-xg-0.238-0.711-0.051&#39;: &lt;__main__.DCEnsemble at 0x1253f1860&gt;,
+ &#39;ensemble-ns-xg-0.358-0.337-0.304&#39;: &lt;__main__.DCEnsemble at 0x1253f1a90&gt;,
+ &#39;ensemble-ns-xg-0.849-0.079-0.072&#39;: &lt;__main__.DCEnsemble at 0x1253f1cc0&gt;,
+ &#39;ensemble-ns-xg-0.747-0.058-0.195&#39;: &lt;__main__.DCEnsemble at 0x1253f1ef0&gt;,
+ &#39;ensemble-ns-xg-0.154-0.526-0.320&#39;: &lt;__main__.DCEnsemble at 0x125411160&gt;,
+ &#39;ensemble-ns-xg-0.508-0.477-0.015&#39;: &lt;__main__.DCEnsemble at 0x125411390&gt;,
+ &#39;ensemble-ns-xg-0.375-0.562-0.063&#39;: &lt;__main__.DCEnsemble at 0x1254115c0&gt;,
+ &#39;ensemble-ns-xg-0.388-0.471-0.141&#39;: &lt;__main__.DCEnsemble at 0x1254117f0&gt;,
+ &#39;ensemble-ns-xg-0.310-0.524-0.166&#39;: &lt;__main__.DCEnsemble at 0x125411a20&gt;,
+ &#39;ensemble-ns-xg-0.065-0.126-0.809&#39;: &lt;__main__.DCEnsemble at 0x125411c50&gt;,
+ &#39;ensemble-ns-xg-0.217-0.031-0.752&#39;: &lt;__main__.DCEnsemble at 0x125411e80&gt;,
+ &#39;ensemble-ns-xg-0.318-0.421-0.261&#39;: &lt;__main__.DCEnsemble at 0x1254040f0&gt;,
+ &#39;ensemble-ns-xg-0.748-0.238-0.014&#39;: &lt;__main__.DCEnsemble at 0x125404320&gt;,
+ &#39;ensemble-ns-xg-0.518-0.140-0.342&#39;: &lt;__main__.DCEnsemble at 0x125404550&gt;,
+ &#39;ensemble-ns-xg-0.236-0.528-0.237&#39;: &lt;__main__.DCEnsemble at 0x125404780&gt;,
+ &#39;ensemble-ns-xg-0.775-0.109-0.116&#39;: &lt;__main__.DCEnsemble at 0x1254049b0&gt;,
+ &#39;ensemble-ns-xg-0.043-0.757-0.201&#39;: &lt;__main__.DCEnsemble at 0x125404be0&gt;,
+ &#39;ensemble-ns-xg-0.390-0.476-0.135&#39;: &lt;__main__.DCEnsemble at 0x125404e10&gt;,
+ &#39;ensemble-ns-xg-0.395-0.129-0.476&#39;: &lt;__main__.DCEnsemble at 0x12540d080&gt;,
+ &#39;dixon-coles-xg-totals-0.003234&#39;: &lt;__main__.DCxGTotals at 0x125218e10&gt;,
+ &#39;dixon-coles-xg-rho-transplant&#39;: &lt;__main__.DCRhoTransplant at 0x1253fdac8&gt;}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
