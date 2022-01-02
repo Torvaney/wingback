@@ -72,3 +72,24 @@ where model = :model
   and league_id in :league_ids
   and date = (:date)::date
 limit 1
+
+
+-- :name fetch_team :one
+select *
+from team
+where id = :team_id
+
+
+-- :name fetch_all_matches :many
+select
+  match.*,
+  home.title as home_team,
+  away.title as away_team
+from match
+join team as home
+  on home.id = match.home_team_id
+join team as away
+  on away.id = match.away_team_id
+where coalesce(league_id in :league_ids, true)
+  and coalesce(season_id in :season_ids, true)
+order by kickoff

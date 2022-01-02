@@ -105,7 +105,7 @@ def encode_parameter_key(key):
 def decode_parameter_key(key):
     if isinstance(key, str):
         return mezzala.ParameterKey(key)
-    if isinstance(key, list):
+    if isinstance(key, list) or isinstance(key, tuple):
         off_def, label = key
         if off_def == 'Offence':
             return mezzala.OffenceParameterKey(label)
