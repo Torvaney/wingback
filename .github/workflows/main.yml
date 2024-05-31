@@ -5,15 +5,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+
     - uses: actions/setup-python@v1
       with:
         python-version: '3.8'
+
     - name: Install the library
       run: |
         pip install -e .[dev]
+
     - name: Read all notebooks
       run: |
         nbdev_read_nbs
+
     - name: Check if all notebooks are cleaned
       run: |
         echo "Check we are starting with clean git checkout"
@@ -23,9 +27,39 @@ jobs:
         echo "Check that strip out was unnecessary"
         git status -s # display the status to see which nbs need cleaning up
         if [ -n "$(git status -uno -s)" ]; then echo -e "!!! Detected unstripped out notebooks\n!!!Remember to run nbdev_install_git_hooks"; false; fi
+
     - name: Check if there is no diff library/notebooks
       run: |
         if [ -n "$(nbdev_diff_nbs)" ]; then echo -e "!!! Detected difference between the notebooks and the library"; false; fi
+
+    #
+    - name: Setup env vars
+      run: cp .env.sample .env
+
+    - name: Restore cached DB
+      id: cache-db-restore
+      uses: actions/cache/restore@v4
+      with:
+        path: .pg_data
+        key: ${{ hashFiles('wingback/db.py', 'wingback/understat.py') }}
+
+    - uses: hoverkraft-tech/compose-action@v1.5.1
+      with:
+        up-flags: -d
+        services: db
+
+    - name: Migrate db
+      run: wingback migrate --no-interactive
+
+    - name: Import test data
+      run: wingback ingest --leagues EPL --seasons 2020
+
+    - name: Cache db data
+      id: cache-db
+      uses: actions/cache@v4
+      with:
+        path: .pg_data
+        key: ${{ hashFiles('wingback/db.py', 'wingback/understat.py') }}
+
     - name: Run tests
-      run: |
-        nbdev_test_nbs
+      run: nbdev_test_nbs
