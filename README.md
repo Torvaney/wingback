@@ -8,6 +8,8 @@ Because it's backtesting... gettit? Wing _back_? ... Yeah, I'll show myself out.
 
 ### Initial setup
 
+This project requires **Python 3.8**.
+
 This project is built on top of [`understat-db`](https://github.com/Torvaney/understat-db). The initial setup is the same.
 
 The simplest way to get started is to populate a local database with `docker-compose`.
