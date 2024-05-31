@@ -54,6 +54,9 @@ jobs:
     - name: Import test data
       run: wingback ingest --leagues EPL --seasons 2020
 
+    - name: Calculate xG totals
+      run: wingback build-tables --args --models --args match_xg
+
     - name: Resimulate matches
       run: wingback resimulate --leagues EPL --seasons 2020
 
