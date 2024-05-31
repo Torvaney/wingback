@@ -54,6 +54,9 @@ jobs:
     - name: Import test data
       run: wingback ingest --leagues EPL --seasons 2020
 
+    - name: Resimulate matches
+      run: wingback resimulate --leagues EPL --seasons 2020
+
     - name: Cache db data
       id: cache-db
       uses: actions/cache@v4
