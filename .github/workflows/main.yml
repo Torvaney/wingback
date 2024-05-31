@@ -10,8 +10,7 @@ jobs:
         python-version: '3.11'
     - name: Install the library
       run: |
-        pip install nbdev jupyter
-        pip install -e .
+        pip install -e .[dev]
     - name: Read all notebooks
       run: |
         nbdev_read_nbs
