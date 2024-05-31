@@ -8,8 +8,6 @@ Because it's backtesting... gettit? Wing _back_? ... Yeah, I'll show myself out.
 
 ### Initial setup
 
-This project requires **Python 3.8**.
-
 This project is built on top of [`understat-db`](https://github.com/Torvaney/understat-db). The initial setup is the same.
 
 The simplest way to get started is to populate a local database with `docker-compose`.
@@ -17,8 +15,8 @@ The simplest way to get started is to populate a local database with `docker-com
 First, clone the repository:
 
 ```bash
-git clone https://github.com/Torvaney/understat-db.git
-cd understat-db
+git clone https://github.com/Torvaney/wingback.git
+cd wingback
 ```
 
 Then, setup the local environment
@@ -33,7 +31,7 @@ Run the database
 
 ```bash
 docker-compose up -d db   # Start a postgres database within a docker container
-wingback migrate      # Create base database tables
+wingback migrate          # Create base database tables
 ```
 
 Finally, import the data you want
