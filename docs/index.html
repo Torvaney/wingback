@@ -41,26 +41,26 @@ nb_path: "nbs/index.ipynb"
 <h2 id="Usage">Usage<a class="anchor-link" href="#Usage"> </a></h2><h3 id="Initial-setup">Initial setup<a class="anchor-link" href="#Initial-setup"> </a></h3><p>This project is built on top of <code>understat-db</code>. The initial setup is the same.</p>
 <p>The simplest way to get started is to populate a local database with <code>docker-compose</code>.</p>
 <p>First, clone the repository:</p>
-<div class="highlight"><pre><span></span>git clone https://github.com/Torvaney/understat-db.git
-<span class="nb">cd</span> understat-db
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Torvaney/wingback.git
+<span class="nb">cd</span><span class="w"> </span>wingback
 </pre></div>
 <p>Then, setup the local environment</p>
-<div class="highlight"><pre><span></span>make env                  <span class="c1"># Create a virtualenv and installs the project &amp; dependencies</span>
-<span class="nb">source</span> venv/bin/activate  <span class="c1"># Activate the virtualenv</span>
-cp .env.sample .env       <span class="c1"># Copy default environment vars to .env</span>
+<div class="highlight"><pre><span></span>make<span class="w"> </span>env<span class="w">                  </span><span class="c1"># Create a virtualenv and installs the project &amp; dependencies</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># Activate the virtualenv</span>
+cp<span class="w"> </span>.env.sample<span class="w"> </span>.env<span class="w">       </span><span class="c1"># Copy default environment vars to .env</span>
 </pre></div>
 <p>Run the database</p>
-<div class="highlight"><pre><span></span>docker-compose up -d db   <span class="c1"># Start a postgres database within a docker container</span>
-wingback migrate      <span class="c1"># Create base database tables</span>
+<div class="highlight"><pre><span></span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>db<span class="w">   </span><span class="c1"># Start a postgres database within a docker container</span>
+wingback<span class="w"> </span>migrate<span class="w">          </span><span class="c1"># Create base database tables</span>
 </pre></div>
 <p>Finally, import the data you want</p>
-<div class="highlight"><pre><span></span>wingback ingest --leagues EPL --seasons <span class="m">2020</span>
+<div class="highlight"><pre><span></span>wingback<span class="w"> </span>ingest<span class="w"> </span>--leagues<span class="w"> </span>EPL<span class="w"> </span>--seasons<span class="w"> </span><span class="m">2020</span>
 </pre></div>
 <h3 id="Backtesting">Backtesting<a class="anchor-link" href="#Backtesting"> </a></h3><p>The xG-based models require match simulations to be present in the database. You can generate these with the <a href="/wingback/cli.html#resimulate"><code>resimulate</code></a> command:</p>
-<div class="highlight"><pre><span></span>wingback resimulate --leagues EPL --seasons <span class="m">2020</span>
+<div class="highlight"><pre><span></span>wingback<span class="w"> </span>resimulate<span class="w"> </span>--leagues<span class="w"> </span>EPL<span class="w"> </span>--seasons<span class="w"> </span><span class="m">2020</span>
 </pre></div>
-<p>Finally, to backtest the models, you can use the <a href="/wingback/backtest.html"><code>backtest</code></a> command:</p>
-<div class="highlight"><pre><span></span>wingback backtest --league EPL --start-date <span class="m">2021</span>-01-01
+<p>Finally, to backtest the models, you can use the <a href="/wingback/cli.html#backtest"><code>backtest</code></a> command:</p>
+<div class="highlight"><pre><span></span>wingback<span class="w"> </span>backtest<span class="w"> </span>--league<span class="w"> </span>EPL<span class="w"> </span>--start-date<span class="w"> </span><span class="m">2021</span>-01-01
 </pre></div>
 <p>Note that the full suite of models is very large (see <code>wingback backtest --help</code>) and takes a long time to run. You can select specific models using the <code>--models</code> flag.</p>
 <h2 id="Requirements">Requirements<a class="anchor-link" href="#Requirements"> </a></h2><p>To run this project you will need:</p>

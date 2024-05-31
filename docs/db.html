@@ -60,7 +60,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="evolve_ignore" class="doc_header"><code>evolve_ignore</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>evolve_ignore</code>(<strong><code>registry</code></strong>=<em><code>['base_base_model']</code></em>)</p>
+<h4 id="evolve_ignore" class="doc_header"><code>evolve_ignore</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>evolve_ignore</code>(<strong><code>cls</code></strong>, <strong><code>registry</code></strong>=<em><code>['base_base_model']</code></em>)</p>
 </blockquote>
 
 </div>
@@ -84,7 +84,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="prefixed_snake_case" class="doc_header"><code>prefixed_snake_case</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L32" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prefixed_snake_case</code>(<strong><code>prefix</code></strong>)</p>
+<h4 id="prefixed_snake_case" class="doc_header"><code>prefixed_snake_case</code><a href="https://github.com/torvaney/wingback/tree/master/wingback/db.py#L32" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prefixed_snake_case</code>(<strong><code>prefix</code></strong>, <strong><code>cls</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -336,29 +336,6 @@ nb_path: "nbs/db.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-8969599f2f2f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> 
-<span class="ansi-green-intense-fg ansi-bold">      3</span> 
-<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">class</span> Backtest<span class="ansi-blue-fg">(</span>BaseModel<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     id <span class="ansi-blue-fg">=</span> peewee<span class="ansi-blue-fg">.</span>PrimaryKeyField<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span>     league_id <span class="ansi-blue-fg">=</span> peewee<span class="ansi-blue-fg">.</span>ForeignKeyField<span class="ansi-blue-fg">(</span>League<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;BaseModel&#39; is not defined</pre>
-</div>
-</div>
-
-</div>
-</div>
 
 </div>
     {% endraw %}

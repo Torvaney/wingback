@@ -76,29 +76,6 @@ nb_path: "nbs/team-strength.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-6b9b531a3ab5&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> dotenv<span class="ansi-blue-fg">.</span>load_dotenv<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> 
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> wingback.db.queries.connect(&#39;postgresql://{user}:{password}@{host}:{port}/{database}&#39;.format(
-</span><span class="ansi-green-intense-fg ansi-bold">      4</span>     host<span class="ansi-blue-fg">=</span>os<span class="ansi-blue-fg">.</span>environ<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;DB_HOST&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     user<span class="ansi-blue-fg">=</span>os<span class="ansi-blue-fg">.</span>environ<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;DB_USER&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;wingback&#39; is not defined</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -185,7 +162,7 @@ within the training data.</p>
 
 <span class="n">test</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">wingback</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">queries</span><span class="o">.</span><span class="n">fetch_matches</span><span class="p">(</span>
     <span class="n">start</span><span class="o">=</span><span class="n">target_date</span><span class="p">,</span>
-    <span class="n">end</span><span class="o">=</span><span class="n">target_date</span><span class="o">+</span><span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> 
+    <span class="n">end</span><span class="o">=</span><span class="n">target_date</span><span class="o">+</span><span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
     <span class="n">league_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
     <span class="n">season_ids</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span>
 <span class="p">))</span>
@@ -207,25 +184,13 @@ within the training data.</p>
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-10-e41c5d502c3a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> train = benchmark_model.fetch_data(
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     league_ids<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">     </span>date<span class="ansi-blue-fg">=</span>target_date
-<span class="ansi-green-intense-fg ansi-bold">      7</span> )
-<span class="ansi-green-intense-fg ansi-bold">      8</span> benchmark_model<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>train<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-9-ff28895f737e&gt;</span> in <span class="ansi-cyan-fg">fetch_data</span><span class="ansi-blue-fg">(self, league_ids, date)</span>
-<span class="ansi-green-intense-fg ansi-bold">     20</span> 
-<span class="ansi-green-intense-fg ansi-bold">     21</span>     <span class="ansi-green-fg">def</span> fetch_data<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> league_ids<span class="ansi-blue-fg">,</span> date<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 22</span><span class="ansi-red-fg">         training_data = wingback.db.queries.fetch_matches(
-</span><span class="ansi-green-intense-fg ansi-bold">     23</span>             start<span class="ansi-blue-fg">=</span>date<span class="ansi-blue-fg">-</span>self<span class="ansi-blue-fg">.</span>time_window<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">     24</span>             end<span class="ansi-blue-fg">=</span>date<span class="ansi-blue-fg">,</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;wingback&#39; is not defined</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.39
+Draw     : 0.23
+Away win : 0.38
+</pre>
 </div>
 </div>
 
@@ -294,6 +259,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.42
+Draw     : 0.30
+Away win : 0.28
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -355,6 +338,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.57
+Draw     : 0.24
+Away win : 0.19
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -382,6 +383,24 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.58
+Draw     : 0.25
+Away win : 0.16
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -428,7 +447,7 @@ within the training data.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ensemble_model</span> <span class="o">=</span> <span class="n">DCEnsemble</span><span class="p">([</span>
     <span class="c1"># Models are supplied with a name and a weight (for a weighted average)</span>
-    <span class="p">(</span><span class="s1">&#39;dixon-coles-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> 
+    <span class="p">(</span><span class="s1">&#39;dixon-coles-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">&#39;dixon-coles-xg-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="p">])</span>
 
@@ -450,6 +469,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.51
+Draw     : 0.28
+Away win : 0.22
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -461,7 +498,7 @@ within the training data.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ensemble_model</span> <span class="o">=</span> <span class="n">DCEnsemble</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;dixon-coles-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> 
+    <span class="p">(</span><span class="s1">&#39;dixon-coles-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">&#39;dixon-coles-xg-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
 <span class="p">])</span>
 
@@ -483,6 +520,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.46
+Draw     : 0.29
+Away win : 0.25
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -494,7 +549,7 @@ within the training data.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ensemble_model</span> <span class="o">=</span> <span class="n">DCEnsemble</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;dixon-coles-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> 
+    <span class="p">(</span><span class="s1">&#39;dixon-coles-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">&#39;dixon-coles-xg-0.008207&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="p">])</span>
 
@@ -513,6 +568,24 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.55
+Draw     : 0.26
+Away win : 0.19
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -575,6 +648,24 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.57
+Draw     : 0.26
+Away win : 0.17
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -642,6 +733,24 @@ within the training data.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Home team: Chelsea
+Away team: Arsenal
+Home win : 0.58
+Draw     : 0.25
+Away win : 0.17
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -655,6 +764,23 @@ within the training data.</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-0.00820749, -0.00471991, -0.00323409, -0.00227608, -0.00156766,
+       -0.00100529, -0.00053893, -0.00014053])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -671,6 +797,27 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>For eps=-0.008207,	0.22824 @180d,	0.05209 @360d
+For eps=-0.004720,	0.42759 @180d,	0.18284 @360d
+For eps=-0.003234,	0.55870 @180d,	0.31215 @360d
+For eps=-0.002276,	0.66385 @180d,	0.44070 @360d
+For eps=-0.001568,	0.75414 @180d,	0.56873 @360d
+For eps=-0.001005,	0.83448 @180d,	0.69635 @360d
+For eps=-0.000539,	0.90755 @180d,	0.82365 @360d
+For eps=-0.000141,	0.97502 @180d,	0.95067 @360d
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -695,6 +842,48 @@ within the training data.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;benchmark&#39;: &lt;__main__.Benchmark at 0x10428c490&gt;,
+ &#39;dixon-coles-0.008207&#39;: &lt;__main__.DCGoals at 0x16449cfd0&gt;,
+ &#39;dixon-coles-xg-0.008207&#39;: &lt;__main__.DCxG at 0x1644f8f10&gt;,
+ &#39;dixon-coles-0.004720&#39;: &lt;__main__.DCGoals at 0x16450efd0&gt;,
+ &#39;dixon-coles-xg-0.004720&#39;: &lt;__main__.DCxG at 0x16458d430&gt;,
+ &#39;dixon-coles-0.003234&#39;: &lt;__main__.DCGoals at 0x16458d940&gt;,
+ &#39;dixon-coles-xg-0.003234&#39;: &lt;__main__.DCxG at 0x16458dca0&gt;,
+ &#39;dixon-coles-0.002276&#39;: &lt;__main__.DCGoals at 0x16458dfa0&gt;,
+ &#39;dixon-coles-xg-0.002276&#39;: &lt;__main__.DCxG at 0x1644b8cd0&gt;,
+ &#39;dixon-coles-0.001568&#39;: &lt;__main__.DCGoals at 0x1647491c0&gt;,
+ &#39;dixon-coles-xg-0.001568&#39;: &lt;__main__.DCxG at 0x164749550&gt;,
+ &#39;dixon-coles-0.001005&#39;: &lt;__main__.DCGoals at 0x164749910&gt;,
+ &#39;dixon-coles-xg-0.001005&#39;: &lt;__main__.DCxG at 0x164749ca0&gt;,
+ &#39;dixon-coles-0.000539&#39;: &lt;__main__.DCGoals at 0x16476f0a0&gt;,
+ &#39;dixon-coles-xg-0.000539&#39;: &lt;__main__.DCxG at 0x16476f430&gt;,
+ &#39;dixon-coles-0.000141&#39;: &lt;__main__.DCGoals at 0x16476f7f0&gt;,
+ &#39;dixon-coles-xg-0.000141&#39;: &lt;__main__.DCxG at 0x16476fb80&gt;,
+ &#39;ensemble-0.05000&#39;: &lt;__main__.DCEnsemble at 0x10452ca90&gt;,
+ &#39;ensemble-0.17857&#39;: &lt;__main__.DCEnsemble at 0x1647632b0&gt;,
+ &#39;ensemble-0.30714&#39;: &lt;__main__.DCEnsemble at 0x164763640&gt;,
+ &#39;ensemble-0.43571&#39;: &lt;__main__.DCEnsemble at 0x164763940&gt;,
+ &#39;ensemble-0.56429&#39;: &lt;__main__.DCEnsemble at 0x164763c70&gt;,
+ &#39;ensemble-0.69286&#39;: &lt;__main__.DCEnsemble at 0x164763f70&gt;,
+ &#39;ensemble-0.82143&#39;: &lt;__main__.DCEnsemble at 0x164772310&gt;,
+ &#39;ensemble-0.95000&#39;: &lt;__main__.DCEnsemble at 0x164772670&gt;,
+ &#39;dixon-coles-xg-totals-0.003234&#39;: &lt;__main__.DCxGTotals at 0x16449cf10&gt;,
+ &#39;dixon-coles-xg-rho-transplant&#39;: &lt;__main__.DCRhoTransplant at 0x16449c8b0&gt;}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 

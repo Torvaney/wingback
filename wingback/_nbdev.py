@@ -2,11 +2,7 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"MetricABC": "backtest.ipynb",
-         "NLLScoreline": "backtest.ipynb",
-         "NLLOutcome": "backtest.ipynb",
-         "Backtest": "db.ipynb",
-         "EnvTyper": "cli.ipynb",
+index = {"EnvTyper": "cli.ipynb",
          "app": "cli.ipynb",
          "initialize_db": "cli.ipynb",
          "migrate": "cli.ipynb",
@@ -25,6 +21,7 @@ index = {"MetricABC": "backtest.ipynb",
          "Matches": "db.ipynb",
          "Shots": "db.ipynb",
          "Resimulation": "db.ipynb",
+         "Backtest": "db.ipynb",
          "PoiBin": "resimulation.ipynb",
          "poisson_binomial_pmf": "resimulation.ipynb",
          "resimulate_match": "resimulation.ipynb",
@@ -44,8 +41,7 @@ index = {"MetricABC": "backtest.ipynb",
          "extract_json": "understat.ipynb",
          "Understat": "understat.ipynb"}
 
-modules = ["backtest.py",
-           "cli.py",
+modules = ["cli.py",
            "db.py",
            "resimulation.py",
            "team_strength.py",

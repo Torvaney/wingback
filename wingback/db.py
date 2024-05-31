@@ -7,7 +7,7 @@ __all__ = ['DB', 'queries', 'evolve_ignore', 'prefixed_snake_case', 'EVOLVE_IGNO
 import functools
 
 import peewee
-import peeweedbevolve
+import peeweedbevolve  # Not used explicitly, but required
 import playhouse.postgres_ext
 import pugsql
 import pyprojroot
