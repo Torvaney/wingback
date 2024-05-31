@@ -1,7 +1,6 @@
 {
   "wingback": {
     "Overview": "/",
-    "Backtesting ": "backtest.html",
     "Understat-DB CLI": "cli.html",
     "Database": "db.html",
     "Match resimulation": "resimulation.html",

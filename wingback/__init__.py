@@ -5,5 +5,4 @@ from . import (
     understat,
     resimulation,
     team_strength,
-    backtest,
 )

@@ -10,9 +10,6 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: 'Backtesting '
-      url: backtest.html
-    - output: web,pdf
       title: Understat-DB CLI
       url: cli.html
     - output: web,pdf
